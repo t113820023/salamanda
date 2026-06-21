@@ -46,9 +46,9 @@ private:
     int m_EnemyWaveWaitCounter = 0;
     glm::vec2 m_EnemyBurstSpawnPosition = glm::vec2{0.0f, 0.0f};
 
-    // --- Enemy2 生成控制狀態（單一生成、隨機間隔 120~300 幀）---
+    // --- Enemy2 生成控制狀態（單一生成、隨機間隔 120~240 幀）---
     static constexpr int kEnemy2SpawnIntervalMin = 120;
-    static constexpr int kEnemy2SpawnIntervalMax = 300;
+    static constexpr int kEnemy2SpawnIntervalMax = 240;
     int m_Enemy2SpawnCounter = 0;
     int m_Enemy2SpawnInterval = 0;
 };
