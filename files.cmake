@@ -2,23 +2,43 @@ set(SRC_FILES
     App.cpp
     Camera.cpp
     Coordinate.cpp
+    MapObject.cpp
     Entity/Character.cpp
     Entity/Bullet.cpp
     Entity/LaserBullet.cpp
     Entity/SoundBullet.cpp
+    Entity/Missile.cpp
+    Entity/Fireball.cpp
     Entity/Enemy.cpp
-)
+    Entity/Enemy2.cpp
+    Entity/Boss1.cpp
+    Entity/Boss2.cpp 
+    StageManager.cpp
+    stages/Stage1_1.cpp
+    stages/Stage1_2.cpp
+    )
 
 set(INCLUDE_FILES
     App.hpp
     Camera.hpp
     Coordinate.hpp
+    MapObject.hpp
+    Entity.hpp
     Entity/Character.hpp
     Entity/Bullet.hpp
     Entity/LaserBullet.hpp
     Entity/SoundBullet.hpp
+    Entity/Missile.hpp
+    Entity/Fireball.hpp
     Entity/Enemy.hpp
-    Entity.hpp
+    Entity/Enemy2.hpp
+    Entity/Boss.hpp
+    Entity/Boss1.hpp
+    Entity/Boss2.hpp
+    Stage.hpp
+    StageManager.hpp
+    stages/Stage1_1.hpp
+    stages/Stage1_2.hpp
 )
 
 set(TEST_FILES

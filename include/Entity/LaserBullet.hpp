@@ -6,9 +6,12 @@
 
 class LaserBullet : public Bullet {
 public:
-    static constexpr float kDefaultSpeed = 300.0f;
+    static constexpr float kDefaultSpeed = 1000.0f;
     static constexpr int kDefaultDamage = 2;
-    static constexpr float kDefaultMaxLifeTime = 0.8f;
+    static constexpr float kDefaultMaxLifeTime = 3.0f;
+    static constexpr int kBurstCount = 5;         // 連發數量
+    static constexpr int kBurstDelay = 5;        // 連發間隔（幀數）
+    static constexpr int kCooldown = 100;         // 連發完成後冷卻（幀數）
     static const glm::vec2 kDefaultScale;
 
     LaserBullet(float speed = kDefaultSpeed,

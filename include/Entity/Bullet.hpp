@@ -7,14 +7,20 @@
 class Bullet : public Util::GameObject {
 public:
     Bullet();
+    static constexpr float kDefaultSpeed = 600.0f;
+    static constexpr int kDefaultDamage = 1;
+    static constexpr float kDefaultMaxLifeTime = 3.0f;
+    static constexpr int kBurstCount = 3;         // 連發數量
+    static constexpr int kBurstDelay = 10;        // 連發間隔（幀數）
+    static constexpr int kCooldown = 90;         // 連發完成後冷卻（幀數）
     virtual ~Bullet() = default;
     virtual void Update();
-    bool IsOffScreen(const glm::vec2& cameraPos) const {
-        // 投影視野範圍：水平 ±128，垂直 ±128
-        const float leftBound = cameraPos.x - 128.0f;
-        const float rightBound = cameraPos.x + 128.0f;
-        const float topBound = 128.0f;
-        const float bottomBound = -128.0f;
+    bool IsOffScreen(const glm::vec2& cameraPos, float viewportHalfWidth = 640.0f, float viewportHalfHeight = 360.0f) const {
+        // 投影視野範圍：動態設定
+        const float leftBound = cameraPos.x - viewportHalfWidth;
+        const float rightBound = cameraPos.x + viewportHalfWidth;
+        const float topBound = viewportHalfHeight;
+        const float bottomBound = -viewportHalfHeight;
 
         return m_Transform.translation.x < leftBound ||
                m_Transform.translation.x > rightBound ||
@@ -26,10 +32,10 @@ public:
     bool IsOutOfLife() const { return m_LifeTime > m_MaxLifeTime; }
 
 protected:
-    float m_Speed = 200.0f;
+    float m_Speed = 600.0f;
     int m_Damage = 1;  // 子彈傷害值
     float m_LifeTime = 0.0f;        // 飛行時間（秒）
-    float m_MaxLifeTime = 0.5f;    // 最大飛行時間（秒）
+    float m_MaxLifeTime = 3.0f;    // 最大飛行時間（秒）
 };
 
 #endif

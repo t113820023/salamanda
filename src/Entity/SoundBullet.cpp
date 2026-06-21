@@ -3,7 +3,7 @@
 #include "Util/Time.hpp"
 
 SoundBullet::SoundBullet(float speed, int damage, float maxLifeTime, const glm::vec2& scale) {
-    SetDrawable(std::make_shared<Util::Image>(std::string(RESOURCE_DIR) + "/Image/bullet.png"));
+    SetDrawable(std::make_shared<Util::Image>(std::string(RESOURCE_DIR) + "/Image/sound.png"));
     m_Transform.scale = scale;  // 聲波尺寸
     SetZIndex(0.5f);
     m_Speed = speed;      // 聲波速度

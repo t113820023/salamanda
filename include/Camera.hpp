@@ -11,7 +11,7 @@ namespace Graphics {
     
     class Camera {
     public:
-        Camera(float scrollSpeed = 100.0f);
+        Camera(float windowWidth, float windowHeight, float scrollSpeed = 100.0f);
 
         Core::WorldPosition ScreenToWorld(const glm::vec2& screenPos) const;
         
@@ -36,6 +36,9 @@ namespace Graphics {
         void SetPosition(const glm::vec2& pos) { m_cameraPos = pos; }
         glm::vec2 GetPosition() const { return m_cameraPos; }
         
+        float GetViewportHalfWidth() const { return m_ViewportHalfWidth; }
+        float GetViewportHalfHeight() const { return m_ViewportHalfHeight; }
+        
     private:
         /* TODO: Add zoom functionality
         */
@@ -45,6 +48,8 @@ namespace Graphics {
         float m_ScrollSpeed;
         
         glm::mat4 m_ProjectionMatrix;
+        float m_ViewportHalfWidth = 640.0f;
+        float m_ViewportHalfHeight = 360.0f;
 
         float m_MinX = 0.0f;
         float m_MaxX = 0.0f;
