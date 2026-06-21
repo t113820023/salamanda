@@ -156,18 +156,20 @@ void App::Update() {
             LOG_INFO("New Missile Created! Total Missiles: {}", m_Missiles.size());
         }
 
-        // 測試 Q 鍵輸入：給予 999 次防碰撞次數
-        static bool qPressed = false;
-        if (Util::Input::IsKeyPressed(Util::Keycode::Q)) {
-            if (!qPressed) {
+        // 測試 O 鍵輸入：給予 999 次防碰撞次數，同時啟用子彈傷害提升（永久生效，直到重生/重啟）
+        static bool oPressed = false;
+        if (Util::Input::IsKeyPressed(Util::Keycode::O)) {
+            if (!oPressed) {
                 if (m_Character) {
                     m_Character->AddCollisionImmunity(999);
-                    LOG_INFO("Q key pressed! Added 999 collision immunity. Total: {}", m_Character->GetCollisionImmunityCount());
+                    m_Character->ActivateBulletDamageBoost();
+                    LOG_INFO("O key pressed! Added 999 collision immunity. Total: {}", m_Character->GetCollisionImmunityCount());
+                    LOG_INFO("O key pressed! Bullet damage boost activated (all bullets now deal {} damage).", Character::kBoostedBulletDamage);
                 }
-                qPressed = true;
+                oPressed = true;
             }
         } else {
-            qPressed = false;
+            oPressed = false;
         }
 
         // 測試 P 鍵輸入：強制進入 BOSS 戰
@@ -195,13 +197,6 @@ void App::Update() {
             }
         } else {
             pPressed = false;
-        }
-
-        // 暫時取消角色碰撞判定：按 G 觸發
-        if (Util::Input::IsKeyUp(Util::Keycode::G) && !m_IsCharacterCollisionDisabled) {
-            m_IsCharacterCollisionDisabled = true;
-            m_CharacterCollisionDisableCounter = 0;
-            LOG_INFO("Character collision disabled for {} frames", App::kCharacterCollisionDisableDuration);
         }
 
         if (m_IsCharacterCollisionDisabled) {

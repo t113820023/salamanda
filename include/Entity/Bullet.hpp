@@ -29,6 +29,7 @@ public:
     }
 
     int GetDamage() const { return m_Damage; }
+    void SetDamage(int damage) { m_Damage = damage; }
     bool IsOutOfLife() const { return m_LifeTime > m_MaxLifeTime; }
 
 protected:

@@ -71,6 +71,11 @@ class Character : public Util::GameObject {
             return false;
         }
 
+        // 子彈傷害提升（永久生效，直到角色重生/關卡重啟才恢復；建立新 Character 物件即自動恢復預設值）
+        static constexpr int kBoostedBulletDamage = 30;
+        bool IsBulletDamageBoostActive() const { return m_BulletDamageBoostActive; }
+        void ActivateBulletDamageBoost() { m_BulletDamageBoostActive = true; }
+
     private:
         std::vector<std::shared_ptr<Bullet>> m_NewBullets;
         std::vector<std::shared_ptr<class Missile>> m_NewMissiles;
@@ -88,6 +93,7 @@ class Character : public Util::GameObject {
 
         int m_SpeedUpgradeLevel = 0;        // 已使用的速度強化次數（上限 kMaxSpeedUpgradeLevel）
         int m_CollisionImmunityCount = 0;   // 目前持有的碰撞免疫次數
+        bool m_BulletDamageBoostActive = false; // 子彈傷害提升是否已啟用（永久生效直到重生/重啟）
 };
 
 #endif // CHARACTER_HPP

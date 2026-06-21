@@ -118,6 +118,12 @@ void Character::Update() {
         else {
             bullet->m_Transform.translation = m_Transform.translation + glm::vec2{characterSize.x, characterSize.y * 0.5f} - glm::vec2{30.0f, bulletSize.y * 2.5f};
         }
+
+        // 子彈傷害提升：啟用後，所有類型子彈（NORMAL/SOUND/LASER）一律覆寫為 kBoostedBulletDamage
+        if (m_BulletDamageBoostActive) {
+            bullet->SetDamage(kBoostedBulletDamage);
+        }
+
         m_NewBullets.push_back(bullet);
     };
 
