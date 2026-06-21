@@ -11,7 +11,7 @@ SoundBullet::SoundBullet(float speed, int damage, float maxLifeTime, const glm::
     m_MaxLifeTime = maxLifeTime;  // 聲波飛行時間
 }
 
-const glm::vec2 SoundBullet::kDefaultScale = {2.0f, 2.0f};
+const glm::vec2 SoundBullet::kDefaultScale = {3.0f, 3.0f};
 
 void SoundBullet::Update() {
     float deltaTime = Util::Time::GetDeltaTimeMs() / 1000.0f;
