@@ -3,7 +3,7 @@
 #include "Util/Time.hpp"
 
 LaserBullet::LaserBullet(float speed, int damage, float maxLifeTime, const glm::vec2& scale) {
-    SetDrawable(std::make_shared<Util::Image>(std::string(RESOURCE_DIR) + "/Image/bullet.png"));
+    SetDrawable(std::make_shared<Util::Image>(std::string(RESOURCE_DIR) + "/Image/laser.png"));
     m_Transform.scale = scale;
     SetZIndex(0.5f);
     m_Speed = speed;      // 雷射速度
